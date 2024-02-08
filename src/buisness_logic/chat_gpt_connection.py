@@ -2,13 +2,15 @@ import openai
 
 
 class ChatGptConnection:
-    def __init__(self, api_key:str =""):
-        openai.api_key = api_key
+    def __init__(self, key_file="gpt-key.txt"):
+        with open(key_file, "r") as file:
+            api_key = file.read().strip()
+            openai.api_key = api_key
         self.model_engine = "gpt-3.5-turbo-1106"
 
     def send_question(self, question):
     # def send_question_to_ChatGPT(question):
-        openai.api_key = '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'  # Замените 'your_api_key' на ваш API ключ
+        # openai.api_key = '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'  # Замените 'your_api_key' на ваш API ключ
 
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo-1106",  # Модель GPT, которую вы хотите использовать
