@@ -2,7 +2,7 @@ import openai
 
 
 class ChatGptConnection:
-    def __init__(self, api_key:str ="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"):
+    def __init__(self, api_key:str ="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"):
         openai.api_key = api_key
         self.model_engine = "gpt-3.5-turbo-1106"
 
