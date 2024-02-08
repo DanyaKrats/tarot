@@ -1,5 +1,4 @@
 import openai
-import httpx
 
 
 class ChatGptConnection:
@@ -23,7 +22,3 @@ class ChatGptConnection:
         else:
             return "Error sending request to ChatGPT API"
 
-# # Пример использования
-# question = "What are the symptoms of a cold?"
-# answer = ChatGptConnection().send_question(question)
-# print(answer)

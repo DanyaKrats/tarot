@@ -1,11 +1,4 @@
-import logging
-from functools import wraps
-from typing import Union, TypeVar
-from fastapi import APIRouter, Depends, Header, HTTPException, Request, status
-from typing import Callable, Union, Optional, Any
-from pydantic import BaseModel
-from dataclasses import dataclass
-from fastapi import Form
+from fastapi import APIRouter
 from src.buisness_logic.cotd import COTDService
 
 
