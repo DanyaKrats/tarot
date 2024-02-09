@@ -15,5 +15,3 @@ class COTDService():
     def make_prompt(self, card, context):
         print(card)
         return f"We do tarot card reading. Format: Card of the day. I got {card}. What kind of day will I have?"
-        # return f"Мы занимаемся гаданием на картах таро. Формат: Карта дня. У меня выпал {card}.Что это значит? Какой у меня будет день?"
-    

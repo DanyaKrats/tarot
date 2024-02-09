@@ -25,7 +25,8 @@ major_arcanas ={
     21: 'The World'
 }
 
-minor_arcanas = {22: 'Ace of Wands', 23: 'Two of Wands', 24: 'Three of Wands', 25: 'Four of Wands', 26: 'Five of Wands', 27: 'Six of Wands', 28: 'Seven of Wands', 29: 'Eight of Wands', 30: 'Nine of Wands', 31: 'Ten of Wands', 32: 'Page of Wands', 33: 'Knight of Wands', 34: 'Queen of Wands', 35: 'King of Wands', 36: 'Ace of Cups', 37: 'Two of Cups', 38: 'Three of Cups', 39: 'Four of Cups', 40: 'Five of Cups', 41: 'Six of Cups', 42: 'Seven of Cups', 43: 'Eight of Cups', 44: 'Nine of Cups', 45: 'Ten of Cups', 46: 'Page of Cups', 47: 'Knight of Cups', 48: 'Queen of Cups', 49: 'King of Cups', 50: 'Ace of Swords', 51: 'Two of Swords', 52: 'Three of Swords', 53: 'Four of Swords', 54: 'Five of Swords', 55: 'Six of Swords', 56: 'Seven of Swords', 57: 'Eight of Swords', 58: 'Nine of Swords', 59: 'Ten of Swords', 60: 'Page of Swords', 61: 'Knight of Swords', 62: 'Queen of Swords', 63: 'King of Swords', 64: 'Ace of Pentacles', 65: 'Two of Pentacles', 66: 'Three of Pentacles', 67: 'Four of Pentacles', 68: 'Five of Pentacles', 69: 'Six of Pentacles', 70: 'Seven of Pentacles', 71: 'Eight of Pentacles', 72: 'Nine of Pentacles', 73: 'Ten of Pentacles', 74: 'Page of Pentacles', 75: 'Knight of Pentacles', 76: 'Queen of Pentacles', 77: 'King of Pentacles'}
+minor_arcanas = {
+    22: 'Ace of Wands', 23: 'Two of Wands', 24: 'Three of Wands', 25: 'Four of Wands', 26: 'Five of Wands', 27: 'Six of Wands', 28: 'Seven of Wands', 29: 'Eight of Wands', 30: 'Nine of Wands', 31: 'Ten of Wands', 32: 'Page of Wands', 33: 'Knight of Wands', 34: 'Queen of Wands', 35: 'King of Wands', 36: 'Ace of Cups', 37: 'Two of Cups', 38: 'Three of Cups', 39: 'Four of Cups', 40: 'Five of Cups', 41: 'Six of Cups', 42: 'Seven of Cups', 43: 'Eight of Cups', 44: 'Nine of Cups', 45: 'Ten of Cups', 46: 'Page of Cups', 47: 'Knight of Cups', 48: 'Queen of Cups', 49: 'King of Cups', 50: 'Ace of Swords', 51: 'Two of Swords', 52: 'Three of Swords', 53: 'Four of Swords', 54: 'Five of Swords', 55: 'Six of Swords', 56: 'Seven of Swords', 57: 'Eight of Swords', 58: 'Nine of Swords', 59: 'Ten of Swords', 60: 'Page of Swords', 61: 'Knight of Swords', 62: 'Queen of Swords', 63: 'King of Swords', 64: 'Ace of Pentacles', 65: 'Two of Pentacles', 66: 'Three of Pentacles', 67: 'Four of Pentacles', 68: 'Five of Pentacles', 69: 'Six of Pentacles', 70: 'Seven of Pentacles', 71: 'Eight of Pentacles', 72: 'Nine of Pentacles', 73: 'Ten of Pentacles', 74: 'Page of Pentacles', 75: 'Knight of Pentacles', 76: 'Queen of Pentacles', 77: 'King of Pentacles'}
 
 
 class Card:
@@ -54,6 +55,5 @@ class Deck:
 
     def get_card_name(self, numb:int):
         arcanas = major_arcanas | minor_arcanas
-        print(arcanas[numb])
         return arcanas[numb]
     

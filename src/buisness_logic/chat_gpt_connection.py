@@ -9,14 +9,11 @@ class ChatGptConnection:
         self.model_engine = "gpt-3.5-turbo-1106"
 
     def send_question(self, question):
-    # def send_question_to_ChatGPT(question):
-        # openai.api_key = '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'  # Замените 'your_api_key' на ваш API ключ
-
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-1106",  # Модель GPT, которую вы хотите использовать
+            model="gpt-3.5-turbo-1106",
             messages=[{"role": "user", "content": question}],
-            max_tokens=100,  # Максимальное количество токенов в ответе
-            temperature=0.7,  # Параметр температуры, регулирующий разнообразие ответов
+            max_tokens=100,
+            temperature=0.7,
         )
 
         if response:
