@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from src.buisness_logic.cotd import COTDService
 import random
-from src.buisness_logic.card_deck import Deck
+from src.buisness_logic.card_deck import Deck, Card
 
 cotd_router = APIRouter(prefix="/card-of-the-day")
 
@@ -11,17 +11,18 @@ def get_cotd(card_numb: int):
     if card_numb > 77 or card_numb < 0:
         return {"Incorrect Input": card_numb}
     prof_class = COTDService()
+    card = Card(card_numb)
     return {
-        "Card": deck.get_card_name(card_numb),
-        "your_result": prof_class.ask_gpt(card_numb)
+        "Card": card.__str__(),
+        "your_result": prof_class.ask_gpt(card)
         }
 
 @cotd_router.get("/")
 def get_cotd():
-    deck = Deck()
     card_numb = random.randint(1, 77)
+    card = Card(card_numb)
     prof_class = COTDService()
     return {
-        "Card": deck.get_card_name(card_numb),
-        "your_result": prof_class.ask_gpt(card_numb)
+        "Card": card.__str__(),
+        "your_result": prof_class.ask_gpt(card)
         }

@@ -1,14 +1,13 @@
 from .chat_gpt_connection import ChatGptConnection
-from .card_deck import Deck
+from .card_deck import Deck, Card
 
 class COTDService():
     def __init__(self) -> None:
         self.gpt = ChatGptConnection()
         self.deck = Deck()
 
-    def ask_gpt(self, card_numb, context = None):
-        card = self.deck.get_card_name(card_numb)
-
+    def ask_gpt(self, card:Card, context = None):
+        card = card.full_name()
         prompt = self.make_prompt(card=card, context=context)
         return self.gpt.send_question(question=prompt)
     
