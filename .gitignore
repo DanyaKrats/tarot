@@ -1,8 +1,3 @@
-# Игнорирование папки __pycache__ и ее содержимого
-__pycache__
-
-# Игнорирование файла gpt-key.txt в корневом каталоге
-gpt-key.txt
-
-# Игнорирование папки .vscode и ее содержимого
-.vscode
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
