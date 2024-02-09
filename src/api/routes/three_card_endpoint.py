@@ -9,7 +9,6 @@ three_card_router = APIRouter(prefix="/three-card")
 
 html_form = """
 <form method="post">
-  <input type="text" name="text_input" placeholder="Введите текст">
   <input type="text" name="question" placeholder="Введите вопрос">
   <button type="submit">Отправить</button>
 </form>
@@ -18,7 +17,7 @@ html_form = """
   document.querySelector('form').addEventListener('submit', async function(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const responseData = await fetch('/', {
+    const responseData = await fetch('/three-card/', {
       method: 'POST',
       body: formData
     }).then(response => response.json());
@@ -43,7 +42,6 @@ def get_tree_card_prediction(question: str = Form(...)):
     deck = Deck()
     cards = deck.shuffle()[0:3]
 
-    # card_numb = random.randint(1, 77)
     prof_class = ThreeCardService()
-    answers = prof_class.ask_gpt
+    answers = prof_class.ask_gpt(context={'question':question})
     return [{"card": cards[i], "answer": [i]} for i in range(3)]
