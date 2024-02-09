@@ -10,6 +10,7 @@ class ChatGptConnection:
 
     def send_question(self, question):
         response = openai.ChatCompletion.create(
+            api_key = openai.api_key,
             model="gpt-3.5-turbo-1106",
             messages=[{"role": "user", "content": question}],
             max_tokens=100,
