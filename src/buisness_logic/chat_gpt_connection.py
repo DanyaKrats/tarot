@@ -13,12 +13,12 @@ class ChatGptConnection:
             api_key = openai.api_key,
             model="gpt-3.5-turbo-1106",
             messages=[{"role": "user", "content": question}],
-            max_tokens=100,
+            max_tokens=1000,
             temperature=0.7,
         )
-
-        if response:
-            return response['choices'][0]['message']['content'].strip()
-        else:
-            return "Error sending request to ChatGPT API"
+        
+        answer = response['choices'][0]['message']['content'].strip()
+        if "Error500" in answer:
+            raise Exception(answer)
+        return answer
 

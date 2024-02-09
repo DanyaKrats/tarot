@@ -12,5 +12,6 @@ class COTDService():
         return self.gpt.send_question(question=prompt)
     
     def make_prompt(self, card, context):
-        print(card)
-        return f"We do tarot card reading. Format: Card of the day. I got {card}. What kind of day will I have?"
+        promt = f"We do tarot card reading. Format: Card of the day. I got {card}. What kind of day will I have? Answer in language {context['language']}"
+        print(promt)
+        return promt
