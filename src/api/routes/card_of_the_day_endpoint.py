@@ -30,7 +30,7 @@ def get_cotd():
 def get_random_card():
     card_numb = random.randint(1, 77)
     a = 0
-    for i in range(100):
+    for i in range(1000):
         card = Card(card_numb)
         if card.rotated:
             a+=1

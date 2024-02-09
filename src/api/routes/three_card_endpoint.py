@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from src.buisness_logic.three_card import ThreeCardService
-import random
 from src.buisness_logic.card_deck import Deck
 from fastapi import Form
 from starlette.responses import HTMLResponse
