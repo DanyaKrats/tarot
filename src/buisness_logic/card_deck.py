@@ -31,29 +31,29 @@ minor_arcanas = {
 
 class Card:
     def __init__(self, value, rotated,) -> None:
-        self.value:str = value
+        self.value:int = value
         self.rotated: bool = rotated
         self.picture:str = value
 
     def __str__(self) -> str:
-        return self.full_names[self.value]
+        return self.full_name()
     
     def __repr__(self) -> str:
-        return self.full_names[self.value]
+        return self.full_name()
     
-class Deck:
-    def  __init__(self, major_only:bool = False) -> None:
-        arcanas =[]
-        if major_only:
-            arcanas = major_arcanas 
-        else:
-            arcanas = major_arcanas | minor_arcanas
-        self.deck = [Card(value = value, rotated = bool(random.getrandbits(1))) for value in arcanas.values()]
-
-    def shuffle(self) -> list[Card]:
-        return random.shuffle(self.deck)
-
-    def get_card_name(self, numb:int):
+    def full_name(self):
         arcanas = major_arcanas | minor_arcanas
-        return arcanas[numb]
+        
+        if self.rotated:
+            return "Reversed " + arcanas[self.value]
+        
+        return "Upright " + arcanas[self.value]
+
+class Deck:
+    def  __init__(self, shuffle:bool = True) -> None:
+        self.deck = [Card(value = value, rotated = bool(random.getrandbits(1))) for value in range(0, 78)]
+        if shuffle:
+            random.shuffle(self.deck)
     
+    def shuffle(self):
+        return self.deck

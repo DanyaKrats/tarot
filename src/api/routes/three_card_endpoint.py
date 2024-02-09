@@ -40,8 +40,9 @@ async def get_root():
 @three_card_router.post("/")
 def get_tree_card_prediction(question: str = Form(...)):
     deck = Deck()
+    print(deck.deck)
     cards = deck.shuffle()[0:3]
 
     prof_class = ThreeCardService()
-    answers = prof_class.ask_gpt(context={'question':question})
-    return [{"card": cards[i], "answer": [i]} for i in range(3)]
+    answers = prof_class.ask_gpt(cards=cards, context={'question':question})
+    return [{"card": cards[i], "answer": answers[i]} for i in range(3)]
