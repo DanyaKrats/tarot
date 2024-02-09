@@ -1,0 +1,2 @@
+class ChatGptRefusedToAnswerException(Exception):
+    pass

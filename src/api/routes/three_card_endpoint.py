@@ -4,8 +4,8 @@ import random
 from src.buisness_logic.card_deck import Deck
 from fastapi import Form
 from starlette.responses import HTMLResponse
-
-three_card_router = APIRouter(prefix="/three-card")
+from exceptions import ChatGptRefusedToAnswerException
+three_card_router = APIRouter(prefix="/three_cards")
 
 html_form = """
 <form method="post">
@@ -17,7 +17,7 @@ html_form = """
   document.querySelector('form').addEventListener('submit', async function(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const responseData = await fetch('/three-card/', {
+    const responseData = await fetch('/three_cards/', {
       method: 'POST',
       body: formData
     }).then(response => response.json());
@@ -39,9 +39,12 @@ async def get_root():
 
 @three_card_router.post("/")
 def get_tree_card_prediction(question: str = Form(...), language:str = Form('russian')):
+  try:
     deck = Deck()
     cards = deck.shuffle()[0:3]
 
     prof_class = ThreeCardService()
     answers = prof_class.ask_gpt(cards=cards, context={'question':question, 'language': language})
     return [{"card": cards[i].full_name(), "answer": answers[i]} for i in range(3)]
+  except ChatGptRefusedToAnswerException:
+     return  [{"card": 'Error', "answer": ChatGptRefusedToAnswerException.args}]

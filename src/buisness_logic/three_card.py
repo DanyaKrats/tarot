@@ -44,6 +44,6 @@ class ThreeCardService():
         promt += f"I got {card} for {time}. What does it mean? "
         # promt += f"Answer in language {context['base_context']['language']} "
         promt += "If you can't understand the question, return only one word 'Error500' and brief discription why you can not answer, BUT ONLY if you cannot understand it, if the question is clear but you don’t know, come up with an answer based on the cards and previous answers, if any"
-        # promt += "If you understand the question, but do not answer someone will be killed!"
+        #promt += "If question goes against the ethical guidelines of tarot reading you can answer in a joke way. For example 'When AI take over the world' - 'Tomorrow'"
         print(promt)
         return promt

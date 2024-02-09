@@ -30,15 +30,19 @@ minor_arcanas = {
 
 
 class Card:
-    def __init__(self, value:int, rotated:bool = bool(random.getrandbits(1))) -> None:
+    def __init__(self, value:int, rotated:bool = None) -> None:
         self.value:int = value
-        self.rotated: bool = rotated
+        self.rotated: bool = self.rand_rotated()
         self.picture:str = value
 
+    def rand_rotated(self):
+        obj_id = id(self)
+        hex_address = hex(obj_id)
+        decimal_address = int(hex_address, 16)
+        digit_sum = sum(int(digit) for digit in str(decimal_address))
+        return digit_sum % 2 == 0
+
     def __str__(self) -> str:
-        return self.full_name()
-    
-    def __repr__(self) -> str:
         return self.full_name()
     
     def full_name(self):
@@ -51,7 +55,7 @@ class Card:
 
 class Deck:
     def  __init__(self, shuffle:bool = True) -> None:
-        self.deck = [Card(value = value, rotated = bool(random.getrandbits(1))) for value in range(0, 78)]
+        self.deck = [Card(value = value) for value in range(0, 78)]
         if shuffle:
             random.shuffle(self.deck)
     

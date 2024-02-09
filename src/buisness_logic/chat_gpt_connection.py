@@ -1,5 +1,5 @@
 import openai
-
+from exceptions import ChatGptRefusedToAnswerException
 
 class ChatGptConnection:
     def __init__(self, key_file="gpt-key.txt"):
@@ -17,8 +17,8 @@ class ChatGptConnection:
             temperature=0.7,
         )
         
-        answer = response['choices'][0]['message']['content'].strip()
+        answer:str = response['choices'][0]['message']['content'].strip()
         if "Error500" in answer:
-            raise Exception(answer)
+            raise ChatGptRefusedToAnswerException(answer.replace("Error500", ''))
         return answer
 
