@@ -5,7 +5,7 @@ from src.buisness_logic.card_deck import Deck
 from fastapi import Form
 from starlette.responses import HTMLResponse
 
-tree_card_router = APIRouter(prefix="/card-of-the-day")
+three_card_router = APIRouter(prefix="/three-card")
 
 html_form = """
 <form method="post">
@@ -33,13 +33,13 @@ html_form = """
 </script>
 """
 
-@tree_card_router.get("/", response_class=HTMLResponse)
+@three_card_router.get("/", response_class=HTMLResponse)
 async def get_root():
     return html_form
 
 
-@tree_card_router.post("/")
-def get_tree_card_prediction(question: str = Form(...))):
+@three_card_router.post("/")
+def get_tree_card_prediction(question: str = Form(...)):
     deck = Deck()
     cards = deck.shuffle()[0:3]
 

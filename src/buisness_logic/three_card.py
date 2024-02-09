@@ -28,8 +28,16 @@ class ThreeCardService():
         else:
             time = 'future'
 
-        promt = "We do tarot card reading. Format: Three cards for the past, present and future." 
+        promt = ''
         
         if context["iteration"] == 1:
-            promt += f"Your prediction for past was: {context['answers'][context["iteration"]]}"        
-        promt += f"I got {card} for {time}. What does it mean?"
+            promt += f"Your prediction for past was: {context['answers'][context["iteration"]]}. "        
+        if context["iteration"] == 2:
+            promt += f"Your prediction for present was: {context['answers'][context["iteration"]]}. "     
+        if promt != '':
+            promt += 'You can reffer this info in your answer. '
+
+        promt = "We do tarot card reading. Format: Three cards for the past, present and future. " + promt       
+        promt += f"I got {card} for {time}. What does it mean? "
+
+        return promt
