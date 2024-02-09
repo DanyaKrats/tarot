@@ -30,7 +30,7 @@ minor_arcanas = {
 
 
 class Card:
-    def __init__(self, value, rotated,) -> None:
+    def __init__(self, value:int, rotated:bool = bool(random.getrandbits(1))) -> None:
         self.value:int = value
         self.rotated: bool = rotated
         self.picture:str = value
